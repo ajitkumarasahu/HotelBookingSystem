@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  POM (Project Object Model) file for the Hotel Booking System project.
+  This file defines the project structure, dependencies, and build configurations
+  for a Java web application packaged as a WAR (Web Application Archive).
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <!-- Model version: always 4.0.0 for Maven 2+ -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+    Basic project metadata.
+    groupId: Unique base package name of the project.
+    artifactId: The name of the project’s output (WAR file name).
+    version: Version number of the build.
+    packaging: WAR indicates this is a web application.
+  -->
+  <groupId>com.hotelbooking</groupId>
+  <artifactId>HotelBookingSystem</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+
+  <!--
+    Java compiler properties.
+    Specifies the Java version for source and target compatibility.
+  -->
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+  <!--
+    Dependencies define external libraries required for compilation and runtime.
+  -->
+  <dependencies>
+
+    <!--
+      Servlet API dependency.
+      Provided scope means it's supplied by the servlet container (e.g., Tomcat),
+      and not bundled into the WAR.
+    -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!--
+      Jackson Databind library for converting Java objects to/from JSON.
+      Useful for API responses and request parsing.
+    -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.15.2</version>
+    </dependency>
+
+    <!--
+      MySQL Connector/J - JDBC driver for connecting Java to MySQL databases.
+    -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.33</version>
+    </dependency>
+
+    <!--
+      JUnit (Optional) - Testing framework for writing and running unit tests.
+      Scope set to 'test' so it is not included in the WAR file.
+    -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <!--
+    Build configuration defines how the project should be compiled and packaged.
+  -->
+  <build>
+    <!--
+      finalName specifies the WAR file name produced after build.
+      e.g., HotelBookingSystem.war
+    -->
+    <finalName>HotelBookingSystem</finalName>
+
+    <plugins>
+      <!--
+        Maven Compiler Plugin compiles the Java source code.
+        Version 3.8.1 supports Java 11.
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

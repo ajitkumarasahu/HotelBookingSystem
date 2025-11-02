@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  web.xml — Deployment Descriptor for the Hotel Booking System web application.
+
+  This file defines how the application’s servlets are registered and mapped to URL patterns.
+  It tells the servlet container (like Apache Tomcat) which classes handle which HTTP requests.
+
+  XML Namespace: Java EE 8 (Servlet 4.0)
+-->
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="4.0">
+
+  <!-- ============================================================
+       CUSTOMER SERVLET
+       Handles customer-related operations such as registration,
+       login, profile management, and fetching customer details.
+       URL pattern: /api/customers/*
+  ============================================================ -->
+  <servlet>
+    <servlet-name>CustomerServlet</servlet-name>
+    <servlet-class>com.hotelbooking.servlet.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerServlet</servlet-name>
+    <url-pattern>/api/customers/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       ROOM SERVLET
+       Handles operations for room management:
+       listing rooms, checking availability, creating or updating rooms.
+       URL pattern: /api/rooms/*
+  ============================================================ -->
+  <servlet>
+    <servlet-name>RoomServlet</servlet-name>
+    <servlet-class>com.hotelbooking.servlet.RoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomServlet</servlet-name>
+    <url-pattern>/api/rooms/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       BOOKING SERVLET
+       Handles hotel booking operations:
+       create, update, cancel, or retrieve booking details.
+       URL pattern: /api/bookings/*
+  ============================================================ -->
+  <servlet>
+    <servlet-name>BookingServlet</servlet-name>
+    <servlet-class>com.hotelbooking.servlet.BookingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookingServlet</servlet-name>
+    <url-pattern>/api/bookings/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       PAYMENT SERVLET
+       Handles payment transactions for bookings,
+       including processing and viewing payment status.
+       URL pattern: /api/payments/*
+  ============================================================ -->
+  <servlet>
+    <servlet-name>PaymentServlet</servlet-name>
+    <servlet-class>com.hotelbooking.servlet.PaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaymentServlet</servlet-name>
+    <url-pattern>/api/payments/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       REVIEW SERVLET
+       Manages customer reviews and feedback for hotels and rooms.
+       Supports creating, viewing, and deleting reviews.
+       URL pattern: /api/reviews/*
+  ============================================================ -->
+  <servlet>
+    <servlet-name>ReviewServlet</servlet-name>
+    <servlet-class>com.hotelbooking.servlet.ReviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewServlet</servlet-name>
+    <url-pattern>/api/reviews/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       NOTIFICATION SERVLET
+       Handles sending and retrieving user notifications (e.g., booking confirmations).
+       URL pattern: /api/notifications/*
+  ============================================================ -->
+  <servlet>
+    <servlet-name>NotificationServlet</servlet-name>
+    <servlet-class>com.hotelbooking.servlet.NotificationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NotificationServlet</servlet-name>
+    <url-pattern>/api/notifications/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       BOOKING HISTORY SERVLET
+       Provides access to historical booking data for customers.
+       URL pattern: /api/history
+  ============================================================ -->
+  <servlet>
+    <servlet-name>BookingHistoryServlet</servlet-name>
+    <servlet-class>com.hotelbooking.servlet.BookingHistoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookingHistoryServlet</servlet-name>
+    <url-pattern>/api/history/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       AUTH SERVLET
+       Manages user authentication (login/logout) and authorization.
+       Handles JWT/session creation and validation.
+       URL pattern: /api/auth/*
+  ============================================================ -->
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>com.hotelbooking.auth.AuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/api/auth/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- ============================================================
+       SESSION CONFIGURATION
+       Defines default session timeout in minutes.
+       Here: 30 minutes of inactivity will invalidate the session.
+  ============================================================ -->
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
+</web-app>
